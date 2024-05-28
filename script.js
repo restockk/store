@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const products = [
-        { title: 'Producto 1', description: 'Descripción del producto 1', image: 'image1.jpg' },
-        { title: 'Producto 2', description: 'Descripción del producto 2', image: 'image2.jpg' },
-        { title: 'Producto 3', description: 'Descripción del producto 3', image: 'image3.jpg' },
+        { title: 'Termo Stanley Quencher H2.0', description: '$34.49 dolares', image: './img/imgProductos/termoStanly.jpg', link:'https://amzn.to/4bVahG5' },
+        { title: 'Samsung Tab S9 FE 128gb', description: '$369.00 dolares', image: './img/imgProductos/samsungTab.jpg', link:'https://amzn.to/451HJbB' },
+        { title: 'Sony WH-CH520', description: '$38.00 dolares', image: './img/imgProductos/auricularesSony.webp', link:'https://amzn.to/3VjdTLB' },
         // Añade más productos según sea necesario
     ];
 
@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <img src="${product.image}" alt="${product.title}">
                 <h2>${product.title}</h2>
                 <p>${product.description}</p>
+                <a class="botonComprar" href="${product.link}">Comprar</a>
             `;
             productContainer.appendChild(card);
         });
