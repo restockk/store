@@ -2,12 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const products = [
         { title: 'Termo Stanley Quencher H2.0', description: '$35.00 USD', image: './img/imgProductos/termoStanly.jpg', link:'https://amzn.to/4bVahG5' },
         { title: 'Samsung Tab S9 FE 128gb', description: '$369.00 USD', image: './img/imgProductos/samsungTab.jpg', link:'https://amzn.to/451HJbB' },
-        { title: 'Sony WH-CH520', description: '$38.00 USD', image: './img/imgProductos/auricularesSony.webp', link:'https://amzn.to/3VjdTLB' },
+        { title: 'Auriculares Sony WH-CH520', description: '$38.00 USD', image: './img/imgProductos/auricularesSony.webp', link:'https://amzn.to/3VjdTLB' },
         // Añade más productos según sea necesario
     ];
 
     const productContainer = document.getElementById('contenedor-de-productos');
     const searchInput = document.getElementById('buscar');
+    const searchButton = document.getElementById('boton-buscar');
 
     function renderProducts(filter = '') {
         productContainer.innerHTML = ''; // Limpia el contenedor
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'card';
             card.innerHTML = `
                 <img src="${product.image}" alt="${product.title}">
-                <h2>${product.title}</h2>
+                <h2><a href="${product.link}">${product.title}</a></h2>
                 <p>${product.description}</p>
                 <a class="botonComprar" href="${product.link}">Comprar</a>
             `;
@@ -30,6 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     searchInput.addEventListener('input', () => {
+        renderProducts(searchInput.value);
+    });
+
+    searchButton.addEventListener('click', (event) => {
+        event.preventDefault();
         renderProducts(searchInput.value);
     });
 
