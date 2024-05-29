@@ -1,21 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
     const products = [
-        { title: 'Termo Stanley Quencher H2.0', description: '$35.00 USD', image: './img/imgProductos/termoStanly.jpg', link:'https://amzn.to/4bVahG5' },
-        { title: 'Samsung Tab S9 FE 128gb', description: '$369.00 USD', image: './img/imgProductos/samsungTab.jpg', link:'https://amzn.to/451HJbB' },
-        { title: 'Auriculares Sony WH-CH520', description: '$38.00 USD', image: './img/imgProductos/auricularesSony.webp', link:'https://amzn.to/3VjdTLB' },
-        // Añade más productos según sea necesario
+        { title: 'Termo Stanley Quencher H2.0', description: '$35.00 USD', image: './img/imgProductos/termoStanly.jpg', link:'https://amzn.to/4bVahG5', category: ['h', 'd']},
+        { title: 'Samsung Tab S9 FE 128gb', description: '$369.00 USD', image: './img/imgProductos/samsungTab.jpg', link:'https://amzn.to/451HJbB', category: ['t']},
+        { title: 'Auriculares Sony WH-CH520', description: '$38.00 USD', image: './img/imgProductos/auricularesSony.webp', link:'https://amzn.to/3VjdTLB', category: ['t']},
     ];
 
     const productContainer = document.getElementById('contenedor-de-productos');
     const searchInput = document.getElementById('buscar');
-    const searchButton = document.getElementById('boton-buscar');
+    const categorySelect = document.getElementById('categoria');
 
-    function renderProducts(filter = '') {
-        productContainer.innerHTML = ''; // Limpia el contenedor
+    function renderProducts(filter = '', category = 'all') {
+        productContainer.innerHTML = '';
 
-        const filteredProducts = products.filter(product => 
-            product.title.toLowerCase().includes(filter.toLowerCase())
-        );
+        const filteredProducts = products.filter(product => {
+            const matchesTitle = product.title.toLowerCase().includes(filter.toLowerCase());
+            const matchesCategory = category === 'all' || product.category.includes(category);
+            return matchesTitle && matchesCategory;
+        });
 
         filteredProducts.forEach(product => {
             const card = document.createElement('div');
@@ -31,14 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     searchInput.addEventListener('input', () => {
-        renderProducts(searchInput.value);
+        renderProducts(searchInput.value, categorySelect.value);
     });
 
-    searchButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        renderProducts(searchInput.value);
+    categorySelect.addEventListener('change', () => {
+        renderProducts(searchInput.value, categorySelect.value);
     });
 
-    // Renderiza todos los productos inicialmente
     renderProducts();
 });
