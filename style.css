@@ -123,4 +123,10 @@ main{
         height: 35px;
         width: 150px;
     }
+    .card {
+        width: 200px;
+    }
+    .card h2{
+        font-size: 12px;
+    }
 }
