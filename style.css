@@ -63,6 +63,7 @@ main{
     flex-wrap: wrap;
 }
 .card {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -79,7 +80,7 @@ main{
     transition: 0.3s;
 }
 .card img {
-    max-width: 100%;
+    width: auto;
     border-radius: 10px;
 }
 
@@ -94,6 +95,31 @@ main{
 .card p {
     color: var(--gray2);
     margin-bottom: 1em;
+}
+.special-offer {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+    border-radius: 5px;
+    z-index: 1;
+}
+.star-rating {
+    display: flex;
+    align-items: center;
+}
+
+.star {
+    font-size: 1.5em;
+    color: var(--gray2);
+}
+
+.star.filled {
+    color: gold;
 }
 .botonComprar{
     display: flex;
@@ -129,5 +155,11 @@ main{
     }
     .card h2{
         font-size: 12px;
+    }
+    .special-offer{
+        font-size: 0.6em;
+    }
+    .star{
+        font-size: 0.9em;
     }
 }
